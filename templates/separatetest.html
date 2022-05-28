@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Separate Chest X-ray Detection</title>
+
+    <link rel="icon" type="image/x-icon" href="../static/images/favicon.ico">
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+    <!--online fontawsome css -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <!-- css end -->
+    <link rel="stylesheet" href="/static/css/separatetest.css">
+</head>
+
+<body>
+    <div class="header1" >
+        <img src="../static/images/main banner.png" style="width: 100%; height: auto;">
+    </div> 
+    
+<!-- here we start the overlay-->
+    <!-- The overlay -->
+    <div id="myNav" class="overlay">
+
+        <!-- Button to close the overlay navigation -->
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+         
+      <!-- Overlay content -->
+      <div class="overlay-content">
+        <a href="/">Home</a>
+        <a href="/aboutus">Aboutus</a>
+        <a href="/#contactUs">Contactus</a>
+        <a href="/dev">Devteam</a>
+      </div>
+    
+      </div>
+      
+     
+    
+    <!--end overlay-->
+
+    <div class="maindiv">
+        <span onclick="openNav()"><img style="cursor: pointer;"  src="../static/android-chrome-512x512.png" height="40px" width="40px">
+        </span>
+        <hr>
+        <div class="row">
+            <div class="col-xs-12 col-sm-4 hidden-xs">
+                <img style="margin-top: -10px;" class="img-responsive" src="../static/images/cxray.jpg">
+
+            </div>
+            <div class="col-xs-12 col-sm-8">
+                <h1 style="text-align: left;"><span
+                        style="color: #2ba9b4; font-weight: bolder; font-size: 40px; font-family: Verdana, Geneva, Tahoma, sans-serif;">We
+                        Take Care Of Your Health By<br>Detecting
+                        <span style="color: rgb(205, 156, 252);" class="txt-type" data-wait="300"
+                            data-words='["Infiltration", "Atelectasis","Cardiomegaly", "Fibrosis", "Effusion" , "Nodule", "Lung Opacity"]'></span></span>
+                </h1>
+                <span>
+                <hr width="100px" style="border-top: 8px solid salmon; border-radius: 200px;">
+                </span>
+                <p style="font-weight: bolder; font-size: 16px; font-family: cursive;">Now, you can do specific test as
+                    well on Quratve.ai platform
+                    <br>
+                </p>
+                <br>
+                <br><br><br>
+
+
+
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="container">
+                <div class="col-xs-12">
+                    <center>
+                        <h2 style="font-weight: bolder; font-size: 30px; color: #6990f2  ">Upload Chest X-ray</h2>
+                    </center>
+                    <form method="POST" action="/separateupload" enctype="multipart/form-data">
+                        <br><br>
+                        <center><label class="hovering-label">
+                                <i class="fa fa-upload" style="font-size: 100px; color: #2ba9b4;"></i>
+                                <input id="file-input" onchange="readURL(this);" type="file" name="chest-x-ray"
+                                    accept=".png, .jpg, .jpeg" style="display: none;" required>
+                            </label></center>
+                        <br>
+
+                        <center> 
+                            <img id="blah" src="#" alt=" please upload image">
+                             
+                        </center>
+                        <br><br>
+                        <center>
+                            <ul style="list-style: none;">
+                                <li>
+                                    <div class="custom-select" style="width:200px;">
+                                        <select name="selectopt" required>
+                                            <option value="">Choose Disease 👇</option>
+                                            <option value="1">Atelectasis</option>
+                                            <option value="2">Cardiomegaly</option>
+                                            <option value="3">Consolidation</option>
+                                            <option value="4">Edema</option>
+                                            <option value="5">Effusion</option>
+                                            <option value="6">Emphysema</option>
+                                            <option value="7">Fibrosis</option>
+                                            <option value="8">Hernia</option>
+                                            <option value="9">Infiltration</option>
+                                            <option value="10">Lung Opacity</option>
+                                            
+                                        </select>
+                                    </div>
+                                </li>
+                                <li style="margin-left: 15px;"><input type="submit" class="submit-button1"></li>
+                            </ul>
+                        </center>
+                        <br><br>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+        <div style="width: 70%; margin: auto;" id="atelectasis-result">
+            {% if final_result == "Normal" %}   
+            <section class="disease-div">
+                <li class="row">
+                    <i class="fa fa-image"></i>
+                    <div class="content">
+                        <div class="details">
+                           <span class="name">{{disease_name}} Result - {{final_result}} <span style="font-size: 16px; color: #6990f2;" class="fa fa-check">  </span></span>
+                            <span class="percent">{{probabilityofdisease}}%</span>
+                        </div>
+        
+                        <div class="progress-bar">
+                            <div id="true-result-bar" class="progress"></div>
+                        </div>
+                        <script>
+                        let name = '{{ probabilityofdisease }}';
+                        let abc = name+"%";
+                        document.getElementById('true-result-bar').style.width = abc;
+
+                        </script>
+                    </div>
+                </li>
+            </section>
+        
+        
+            {% elif final_result in ("Atelectasis" , "Cardiomegaly" , "Consolidation" , "Edema" , "Effusion" , "Emphysema" , "Fibrosis" , "Hernia" , "Infiltration" , "Lung Opacity", "Mass" , "Nodule", "Pleural Thickening" , "Pneumonia" , "Pneumothorax" )  %}
+        
+            <section class="disease-div-false">
+                <li class="row">
+                    <i class="fa fa-image"></i>
+                    <div class="content">
+                        <div class="details">
+                            <span class="name">{{disease_name}} Result - Risk <span style="font-size: 16px; color: red;"> &#10060;</span></span>
+                            <span class="percent">{{probabilityofdisease}}%</span>
+                        </div>
+        
+                        <div class="progress-bar">
+                            <div id="false-result-bar" class="progress" ></div>
+                        </div>
+
+                        <script>
+                            let name1 = '{{ probabilityofdisease }}';
+                            let bcd = name1+"%";
+                            document.getElementById('false-result-bar').style.width = bcd;
+    
+                            </script>
+                    </div>
+                </li>
+            </section>
+            {% if final_result != "Normal" %}  
+            <h2>The Affected area or severity of disease can be viewed below<h2> 
+            <center><img src="{{gradcampath}}" height="300px" width="250px"></center>
+            {% endif %}
+            {% endif %}
+            
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+
+
+
+    <div id="footer-image">
+        <img src="../static/images/doctor1.png">
+    </div>
+</body>
+
+</html>
+
+
+
+
+<script src="/static/js/upload.js"></script>
+<script src="https://code.jquery.com/jquery-2.1.3.js"></script>
+<script src="/static/js/bootstrap.min.js"></script>
+
+
+<script>
+    var x, i, j, l, ll, selElmnt, a, b, c;
+    /* Look for any elements with the class "custom-select": */
+    x = document.getElementsByClassName("custom-select");
+    l = x.length;
+    for (i = 0; i < l; i++) {
+        selElmnt = x[i].getElementsByTagName("select")[0];
+        ll = selElmnt.length;
+        /* For each element, create a new DIV that will act as the selected item: */
+        a = document.createElement("DIV");
+        a.setAttribute("class", "select-selected");
+        a.innerHTML = selElmnt.options[selElmnt.selectedIndex].innerHTML;
+        x[i].appendChild(a);
+        /* For each element, create a new DIV that will contain the option list: */
+        b = document.createElement("DIV");
+        b.setAttribute("class", "select-items select-hide");
+        for (j = 1; j < ll; j++) {
+            /* For each option in the original select element,
+            create a new DIV that will act as an option item: */
+            c = document.createElement("DIV");
+            c.innerHTML = selElmnt.options[j].innerHTML;
+            c.addEventListener("click", function (e) {
+                /* When an item is clicked, update the original select box,
+                and the selected item: */
+                var y, i, k, s, h, sl, yl;
+                s = this.parentNode.parentNode.getElementsByTagName("select")[0];
+                sl = s.length;
+                h = this.parentNode.previousSibling;
+                for (i = 0; i < sl; i++) {
+                    if (s.options[i].innerHTML == this.innerHTML) {
+                        s.selectedIndex = i;
+                        h.innerHTML = this.innerHTML;
+                        y = this.parentNode.getElementsByClassName("same-as-selected");
+                        yl = y.length;
+                        for (k = 0; k < yl; k++) {
+                            y[k].removeAttribute("class");
+                        }
+                        this.setAttribute("class", "same-as-selected");
+                        break;
+                    }
+                }
+                h.click();
+            });
+            b.appendChild(c);
+        }
+        x[i].appendChild(b);
+        a.addEventListener("click", function (e) {
+            /* When the select box is clicked, close any other select boxes,
+            and open/close the current select box: */
+            e.stopPropagation();
+            closeAllSelect(this);
+            this.nextSibling.classList.toggle("select-hide");
+            this.classList.toggle("select-arrow-active");
+        });
+    }
+
+    function closeAllSelect(elmnt) {
+        /* A function that will close all select boxes in the document,
+        except the current select box: */
+        var x, y, i, xl, yl, arrNo = [];
+        x = document.getElementsByClassName("select-items");
+        y = document.getElementsByClassName("select-selected");
+        xl = x.length;
+        yl = y.length;
+        for (i = 0; i < yl; i++) {
+            if (elmnt == y[i]) {
+                arrNo.push(i)
+            } else {
+                y[i].classList.remove("select-arrow-active");
+            }
+        }
+        for (i = 0; i < xl; i++) {
+            if (arrNo.indexOf(i)) {
+                x[i].classList.add("select-hide");
+            }
+        }
+    }
+
+    /* If the user clicks anywhere outside the select box,
+    then close all select boxes: */
+    document.addEventListener("click", closeAllSelect);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // ES6 Class
+    class TypeWriter {
+        constructor(txtElement, words, wait = 3000) {
+            this.txtElement = txtElement;
+            this.words = words;
+            this.txt = '';
+            this.wordIndex = 0;
+            this.wait = parseInt(wait, 10);
+            this.type();
+            this.isDeleting = false;
+        }
+
+        type() {
+            // Current index of word
+            const current = this.wordIndex % this.words.length;
+            // Get full text of current word
+            const fullTxt = this.words[current];
+
+            // Check if deleting
+            if (this.isDeleting) {
+                // Remove char
+                this.txt = fullTxt.substring(0, this.txt.length - 1);
+            } else {
+                // Add char
+                this.txt = fullTxt.substring(0, this.txt.length + 1);
+            }
+
+            // Insert txt into element
+            this.txtElement.innerHTML = `<span class="txt">${this.txt}</span>`;
+
+            // Initial Type Speed
+            let typeSpeed = 300;
+
+            if (this.isDeleting) {
+                typeSpeed /= 2;
+            }
+
+            // If word is complete
+            if (!this.isDeleting && this.txt === fullTxt) {
+                // Make pause at end
+                typeSpeed = this.wait;
+                // Set delete to true
+                this.isDeleting = true;
+            } else if (this.isDeleting && this.txt === '') {
+                this.isDeleting = false;
+                // Move to next word
+                this.wordIndex++;
+                // Pause before start typing
+                typeSpeed = 500;
+            }
+
+            setTimeout(() => this.type(), typeSpeed);
+        }
+    }
+
+
+    // Init On DOM Load
+    document.addEventListener('DOMContentLoaded', init);
+
+    // Init App
+    function init() {
+        const txtElement = document.querySelector('.txt-type');
+        const words = JSON.parse(txtElement.getAttribute('data-words'));
+        const wait = txtElement.getAttribute('data-wait');
+        // Init TypeWriter
+        new TypeWriter(txtElement, words, wait);
+    }
+
+
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#blah')
+                    .attr('src', e.target.result)
+                    .width(400)
+                    .height(400);
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+
+
+
+</script>

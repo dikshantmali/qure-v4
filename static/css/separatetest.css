@@ -1,0 +1,403 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    background-color: #dafaf2;
+    background-attachment: fixed;
+}
+
+.maindiv{
+    width: 80%;
+    margin: auto;
+    height: auto;
+    padding: 20px;
+    background-color: rgba(255,255,255,1);
+    border-radius: 10px;
+    /* background-color: rgba(255,255,255,0.15);
+    backdrop-filter: blur(10px);*/
+    margin-top: 90px; 
+    margin-bottom: 90px;
+}
+
+#footer-image img{
+    position:fixed;
+    right:0;
+    bottom:0;
+    float: right;
+
+    max-width: 25%;
+    z-index: 1;    
+}
+
+ul li{
+    display: inline-block;
+
+}
+.submit-button1 {
+	border: none;
+    
+	cursor: pointer;
+	outline: none;
+	padding: 10px 40px;
+	text-align: center;
+	text-transform: uppercase;
+	color: #fff;
+	background: rgb(137, 171, 245);
+    
+    box-shadow: 0 0 5px grey;
+	transition: .3s all ease;
+	letter-spacing: 2px;
+}
+
+.submit-button1:hover{
+    box-shadow: 0 0 0px;
+}
+
+/* Cursor */
+.txt-type > .txt {
+    border-right: 0.5rem solid #777;
+  }
+
+
+.hovering-label{
+    cursor: pointer;
+}
+
+
+
+.form-button {
+	border: none;
+	outline: none;
+	padding: 20px 110px;
+	font-weight: bold;
+	text-align: center;
+	text-transform: uppercase;
+	color: #000;
+	border-radius: 3px;
+	cursor: pointer;
+	background: #8cf1d0;
+	transition: .3s all ease;
+	
+	letter-spacing: 2px;
+}
+.form-button:hover {
+	background-color: #78e6c2;
+	-webkit-box-shadow: 0px 10px 25px 0px rgba(72,72,72,0.1);
+	-moz-box-shadow: 0px 10px 25px 0px rgba(72,72,72,0.1);
+	box-shadow: 0px 10px 25px 0px rgba(72,72,72,0.1);
+	bottom: 45px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* The container must be positioned relative: */
+.custom-select {
+    position: relative;
+    font-family: Arial;
+    letter-spacing: 2px;
+    
+    box-shadow: 0 0 5px grey;
+    
+  }
+
+
+
+  .custom-select:hover{
+
+    box-shadow: 0 0 0px;  
+}
+
+  
+  .custom-select select {
+    display: none; /*hide original SELECT element: */
+  }
+  
+  .select-selected {
+    background-color: rgb(243, 125, 131);
+   
+  }
+  
+  
+  
+  /* style the items (options), including the selected item: */
+  .select-items div,.select-selected {
+    color: #ffffff;
+    padding: 8px 16px;
+    border: 1px solid transparent;
+    border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+    cursor: pointer;
+  }
+  
+  /* Style items (options): */
+  .select-items {
+    position: absolute;
+    background-color: #b9daf5;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 99;
+  }
+  
+  /* Hide the items when the select box is closed: */
+  .select-hide {
+    display: none;
+  }
+  
+  .select-items div:hover, .same-as-selected {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+
+
+
+  .hovering-label i:hover {
+    /* Start the shake animation and make the animation last for 0.5 seconds */
+    animation: shake 0.5s;
+  
+    /* When the animation is finished, start again */
+    animation-iteration-count: infinite;
+  }
+  
+  @keyframes shake {
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    10% { transform: translate(-1px, -2px) rotate(-1deg); }
+    20% { transform: translate(-3px, 0px) rotate(1deg); }
+    30% { transform: translate(3px, 2px) rotate(0deg); }
+    40% { transform: translate(1px, -1px) rotate(1deg); }
+    50% { transform: translate(-1px, 2px) rotate(-1deg); }
+    60% { transform: translate(-3px, 1px) rotate(0deg); }
+    70% { transform: translate(3px, 1px) rotate(-1deg); }
+    80% { transform: translate(-1px, -1px) rotate(1deg); }
+    90% { transform: translate(1px, 2px) rotate(0deg); }
+    100% { transform: translate(1px, -2px) rotate(-1deg); }
+  }
+
+
+
+  .covid-test-button{
+    color: #fff;
+    text-decoration: none;
+  }
+
+
+
+
+
+
+  .disease-div  .row{
+    background: #ebfcf6;
+    margin-bottom: 20px;
+    list-style: none;
+    padding: 15px 20px;
+    border-radius: 5px;
+    display: flex;
+  }
+  
+  
+  .disease-div-false  .row{
+    background: rgb(250, 184, 184);
+    margin-bottom: 20px;
+    list-style: none;
+    padding: 15px 20px;
+    border-radius: 5px;
+    display: flex;
+  }
+  .disease-div .row i{
+    font-size: 30px;
+    color: #6990f2;
+  
+  
+  
+  }
+  
+  .disease-div-false .row i{
+    font-size: 30px;
+    color: whitesmoke;
+  
+  
+  
+  }
+  .disease-div .row .content{
+    width: 100%;
+    margin-left: 15px;
+    }
+    .disease-div-false .row .content{
+      width: 100%;
+      margin-left: 15px;
+      }
+    
+    .disease-div .details{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 7px;
+      
+      
+    
+    }
+    .disease-div-false .details{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 7px;
+      
+      
+    
+    }
+  
+    .disease-div .progress-bar{
+      height: 6px;
+      width: 100%;
+      background: #fff;
+      margin-bottom: 4px;
+      border-radius: 30px;
+    
+    
+    }
+    .disease-div .progress{
+      height: 100%;
+      width: 10%;
+      background: #6990f2;
+      border-radius: inherit;
+    
+    }	
+    
+  
+    
+  
+    
+  
+  
+  
+  
+    .disease-div-false .row .content{
+      width: 100%;
+      margin-left: 15px;
+      }
+      
+      .disease-div-false .details{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 7px;
+        
+        
+      
+      }
+      
+      
+      .disease-div-false .progress-bar{
+        height: 6px;
+        width: 100%;
+        background: #fff;
+        margin-bottom: 4px;
+        border-radius: 30px;
+      
+      
+      }
+      
+      .disease-div-false .progress{
+        height: 100%;
+        width: 60%;
+        background: salmon;
+        border-radius: inherit;
+      
+      }
+  
+  
+  
+  
+  
+      .disease-div{
+        font-size: 16px;
+      }
+  
+      .disease-div-false{
+        font-size: 16px;
+      }
+  
+  
+      .disease-div .name{
+        color: black;
+        font-weight: bolder;
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+      }
+  
+      .disease-div-false .name{
+        color: black;
+        font-weight: bolder;
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        
+      }
+  
+
+
+      /* The Overlay (background) */
+.overlay {
+	/* Height & width depends on how you want to reveal the overlay (see JS below) */   
+	height: 100%;
+	width: 0;
+	position: fixed; /* Stay in place */
+	z-index: 1; /* Sit on top */
+	left: 0;
+	top: 0;
+	background-color: rgb(0, 0, 0); /* Black fallback color */
+	background-color: rgba(0,0,0, 0.9); /* Black w/opacity */
+	overflow-x: hidden; /* Disable horizontal scroll */
+	transition: 0.5s; /* 0.5 second transition effect to slide in or slide down the overlay (height or width, depending on reveal) */
+  }
+  
+  /* Position the content inside the overlay */
+  .overlay-content {
+	position: relative;
+	top: 25%; /* 25% from the top */
+	width: 100%; /* 100% width */
+	text-align: center; /* Centered text/links */
+	margin-top: 30px; /* 30px top margin to avoid conflict with the close button on smaller screens */
+  }
+  
+  /* The navigation links inside the overlay */
+  .overlay a {
+	padding: 8px;
+	text-decoration: none;
+	font-size: 36px;
+	color: #818181;
+	display: block; /* Display block instead of inline */
+	transition: 0.3s; /* Transition effects on hover (color) */
+  }
+  
+  /* When you mouse over the navigation links, change their color */
+  .overlay a:hover, .overlay a:focus {
+	color: #f1f1f1;
+  }
+  
+  /* Position the close button (top right corner) */
+  .overlay .closebtn {
+	position: absolute;
+	top: 20px;
+	right: 45px;
+	font-size: 60px;
+  }
+  
+  /* When the height of the screen is less than 450 pixels, change the font-size of the links and position the close button again, so they don't overlap */
+  @media screen and (max-height: 450px) {
+	.overlay a {font-size: 20px}
+	.overlay .closebtn {
+	  font-size: 40px;
+	  top: 15px;
+	  right: 35px;
+	}
+  }
